@@ -1,0 +1,47 @@
+<div id="leaflet"></div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Check way</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="clearForm()"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="from" class="form-label">From</label>
+            <input type="text" class="form-control" id="from" placeholder="Search start location"
+              (change)="onSearchInputForm($event,true)" [(ngModel)]="startSelectedValName" name="from" (paste)="onSearchInputForm($event,true)">
+          </div>
+          <div class="area-list">
+            <ul *ngIf="matchedArea?.startList?.length > 0">
+              <li *ngFor="let area of matchedArea?.startList" (click)="getValue(area, true)">
+                <span [innerHTML]="area.html"></span>
+              </li>
+            </ul>
+            <!-- <p *ngIf="!matchedArea?.startList?.length">Record not found</p> -->
+          </div>
+          <div class="mb-3">
+            <label for="to" class="form-label">To</label>
+            <input type="text" class="form-control" id="to" placeholder="Search end location"
+              (change)="onSearchInputForm($event,false)" [(ngModel)]="endSelectedValName" name="to" (paste)="onSearchInputForm($event,false)">
+          </div>
+          <div class="area-list">
+            <ul *ngIf="matchedArea?.endList?.length > 0">
+              <li *ngFor="let area of matchedArea?.endList" (click)="getValue(area, false)">
+                {{area.name}}
+              </li>
+            </ul>
+            <!-- <p *ngIf="!matchedArea?.endList?.length && endSelectedValName">Record not found</p> -->
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="clearForm()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="onSearch()" data-bs-dismiss="modal"
+          [disabled]="!startSelectedValName || !endSelectedValName">Search</button>
+      </div>
+    </div>
+  </div>
+</div>

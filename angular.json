@@ -30,9 +30,21 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/ol/ol.css",
+              "./node_modules/leaflet/dist/leaflet.css",
+              "./node_modules/leaflet-fullscreen/dist/leaflet.fullscreen.css",
+              "./node_modules/leaflet-search/dist/leaflet-search.src.css",
+              "./node_modules/leaflet-control-geocoder/dist/Control.Geocoder.css",
+              "./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/leaflet/dist/leaflet.js",
+              "./node_modules/leaflet-fullscreen/dist/Leaflet.fullscreen.js",
+              "./node_modules/leaflet-control-geocoder/dist/Control.Geocoder.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.bundle.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -100,5 +112,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "72d43e53-2934-4e18-b16f-59acc5504102"
   }
 }
